@@ -1,12 +1,13 @@
-
-import robocode.*;
 import java.awt.Color;
+import robocode.*;
 
+// API help : http://robocode.sourceforge.net/docs/robocode/robocode/Robot.html
 
-public class RuhSeekers extends BravoBot {
-	
-	
-
+/**
+ * SkdCharlie - a robot by (your name here)
+ */
+public class RuhSeekers extends CharlieBot
+{
 	boolean peek;
 	double moveAmount; 
 	
@@ -29,14 +30,18 @@ public class RuhSeekers extends BravoBot {
 		ahead(moveAmount);
 		peek = true;
 		turnRight(90);
-		turnRight(10);
+		turnRight(5);
+		
 
 		while (true) {
 		
 			peek = true;
+			turnGunRight(180);
 			ahead(moveAmount);
 			peek = false;
 			turnRight(90);
+			
+			
 		}
 	}
 
@@ -52,8 +57,9 @@ public class RuhSeekers extends BravoBot {
 //	}
 
 	
-	public void onScannedRobot(ScannedRobotEvent e) {
+	public void onRobotDetected(ScannedRobotEvent e) {
 		
+		turnGunRight(180);
 		if(e.getDistance()<100) {
 			fire(3);
 		}else {
@@ -63,10 +69,12 @@ public class RuhSeekers extends BravoBot {
 		if (peek) {
 			scan();
 		}
+		
 	}
 	
 	public void onHitRobot(HitRobotEvent e) {
 		if (e.getBearing() > -10 && e.getBearing() < 10) {
+			turnGunRight(180);
 			fire(3);
 		}
 //		if (e.isMyFault()) {
@@ -87,7 +95,5 @@ public class RuhSeekers extends BravoBot {
 //		}
 //		ahead(40); 
 	}
-
-
 
 }
