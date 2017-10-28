@@ -24,7 +24,7 @@ import robocode.WinEvent;
  *
  * @author Pradeep Madushan
  */
-public class RuhSeeker extends AlphaBot {
+public class RuhSeekers extends AlphaBot {
 
 boolean peek; 
 	double moveAmount; 
